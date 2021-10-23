@@ -1,0 +1,518 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Italianno&display=swap');
+
+@font-face {
+    font-family: Mostery;
+    src: url(webfont/Mostery.ttf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 不累加邊框border與內距padding */
+}
+
+body {
+    font-family: "Noto Sans TC", Arial, Helvetica, "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+/* 共用的背景顏色 */
+.lightpink {
+    background-color: #ece1e8;
+}
+
+.lightblue {
+    background-color: rgb(223, 239, 243);
+}
+
+.lightgreen {
+    background-color: #dfe2de;
+}
+
+/* 檔頭區 */
+header {
+    position: relative;
+    height: 100vh;
+    /* vh相對高度 */
+    border: solid 25px #fff;
+    /* solid實線，設定背景內距白色四邊25px */
+    overflow: hidden;
+}
+
+header .logo {
+    width: 75px;
+    position: absolute;
+    left: 40px; /* 要跟下面的keyframe left一樣 */
+    top: 40px;
+    z-index: 999;
+    animation: logo 3s;
+}
+@keyframes logo{
+    from{ left: -100px; opacity: 0;}
+    to{ left: 40px; opacity: 1;}
+}
+
+nav ul {
+    /* ul前方空一格的意思，nav 裡面的ul ，也等於nav ul li(但比較耗效能)*/
+    list-style: none;
+    /* 不要有ul的清單點點 */
+    z-index: 999;
+}
+
+nav li {
+    display: inline-block;
+    /* 沒有設定寬高會自動抓取元素尺寸 */
+}
+
+.icon {
+    /* 設定icon位置在右側 */
+    position: absolute;
+    /* right   :-200px; */
+    top: 40px;
+    animation: icon 2s forwards;
+}
+
+@keyframes icon{
+    from{ right: -200px; }
+    to{ right: 40px;}
+}
+
+.icon li {
+    /* 上面有所以這邊會自動 display: inline-block不會浮起來 */
+    width: 35px;
+    margin: 0 5px;
+    /* 上下0,左右5 */
+    opacity: 0.7;
+    /* 透明度70%，裡面的整個東西都會變半透明 */
+}
+
+header .menu {
+    /* 設定menu位置在右側 */
+    position: absolute;
+    right: 40px;
+    top: 100px;
+    animation: menu 3s backwards;
+}
+@keyframes menu{
+    from{right: -600px;}
+    to{ right: 40px;}
+}
+
+header .menu li {
+    /* 上面有所以這邊會自動 display: inline-block */
+}
+
+.menu a {
+    display: block;
+    /* 沒有設定寬高會自動延展 */
+    width: 100px;
+    height: 35px;
+    line-height: 35px;
+    /* 垂直置中跟高度一樣 */
+    text-align: center;
+    /* 欄位寬置中 */
+    color: gray;
+    text-decoration: none;
+    /* 無底線 */
+    background-color: rgba(255, 255, 255, 0.4);
+    /* 只針對被景色做半透明 */
+    border: solid 1px transparent;
+    /* 給它1px的透名邊框，hover有邊框時按鈕不會跟著一起連動 */
+}
+
+.menu a:hover {
+    border: solid 1px gray;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.name {
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    animation: name 5s ;
+}
+@keyframes name{
+    0%{top: 0;left: -300px;}
+    25%{top: 60%;left: 30%;}
+    50%{top: 20%;left: 30%;}
+    100%{top: 45%;left: 20%;}
+}
+.name h2 {
+    font-size: 3rem;
+    /* rem字體單位 */
+    font-weight: 100;
+    /* 針對name h2的思源黑體改細 */
+}
+
+.name h3 {
+    font-weight: 100;
+    /* 針對name h3的思源黑體改細 */
+    font-family: 'Italianno', cursive;
+    font-size: 3em;
+}
+
+header figure {
+    width: 40%;
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    z-index: 998;
+    animation: banner 2s both;
+}
+@keyframes banner{
+    from{ right: -400px;}
+    to{ right: 0;}
+}
+.bg_video{
+    height: 100vh;
+}
+
+.bg_video video {
+    /* 寬高都設定100%，cover偵測比例決定套用寬100%或是高100% */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: opacity(30%) saturate(60%) brightness(150%);
+}
+
+/* ------------------主要內容區共用--------------------- */
+section {
+    display: flex;
+    flex-direction: column;
+    /* 垂直排版 */
+    align-items: center;
+    /* flex副軸預設值為stretch會拉長延伸 */
+    height: 100vh;
+}
+
+section h1 {
+    color: #444;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 30px 0;
+    padding-top: 10px;
+    border-top: solid 5px #444;
+}
+
+/* ------------------service/newse共用區--------------------- */
+/* 共用中間加逗點 */
+.service-list,.news-list {/* class=service-list */
+    display: flex;
+    /* 水平排版 */
+    width: 80%;
+}
+.service-list article,.news-list article {
+    flex: 1;
+    /* 伸展比1，每個都1等分 */
+    margin: 0 20px;
+    height: 75vh;
+}
+.service-list h2,.news-list h2 {
+    font-family: Mostery;
+    /* 新增字體 */
+    font-size: 2rem;
+    letter-spacing: 0.2rem;
+    margin: 10px 0;
+}
+
+/* ------------------SERVICE區--------------------- */
+.service-list article {
+    position: relative;
+    /* 給 list a absolute爸爸位置 */
+    flex: 1;
+    /* 伸展比1，每個都1等分 */
+    margin: 0 20px;
+    height: 75vh;
+    background-size: cover;
+    /* 把圖片放大，右邊多的會消掉 */
+    background-position: center;
+    /* 把圖片置中 */
+    border-radius: 25px;
+    /* 圓角邊框 */
+    overflow: hidden;
+    /* 透明框超出隱藏 */
+}
+
+.service-list article:first-child {
+    background-image: url('images/pt_svc1.jpg');
+}
+
+.service-list article:nth-child(2) {
+    background-image: url('images/pt_svc2.jpg');
+}
+
+.service-list article:last-child {
+    background-image: url('images/pt_svc3.jpg');
+}
+.service-list a {
+    position: absolute;
+    /* 讓字跟背景透明往下，position會吃孩子的寬高，要設寬度 */
+    left: 0px;
+    bottom: 0px;
+    display: block;
+    width: 100%;
+    /* 因為position會吃寬度，所以要設定寬度 */
+    padding: 10px 20px;
+    background-color: rgb(0, 0, 0, .4);
+    /* .4透明度40% */
+    color: white;
+    text-decoration: none;
+    /* 不要底線 */
+}
+.service-list p {
+    /* 單行省略，一定要3行都寫才會運作 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 文字一行超出範圍後面自動... */
+    white-space: nowrap;
+    /* 文本不換行*/
+}
+/* ------------------ABOUT區--------------------- */
+#about {
+    background-image: url('images/pt_about.jpg');
+    background-size: cover;
+    /* 背景圖放大至內容的大小，但此方法容易使背景圖因放大而失真 */
+    background-attachment: fixed;
+    /* 背景固定 */
+}
+
+#about div {
+    display: flex;
+    flex-direction: column;
+    /* 垂直排版 */
+    align-items: center;
+    /* flex副軸預設值stetch排列會拉伸填滿 ,設定center改置中位置*/
+    width: 55%;
+    height: 100vh;
+    background-color: rgba(183, 148, 190, 0.4);
+}
+
+#about p {
+    margin: 0 10% 5%;
+    overflow: auto;
+    /* 自動使用捲輪軸 */
+}
+
+/* ---SCROLL BAR 捲輪軸(套件)---*/
+.scrollbox {
+    /* poisition: relative */
+    width: 80%;
+    height: 70vh;
+    /* margin: 20px auto */
+    padding: 10px;
+    /* background-color: #fff */
+    overflow: scroll;
+    box-shadow: 0 2px 10px rgba(#000, .5);
+}
+
+.scrollbox::-webkit-scrollbar {
+    width: 10px;
+    background: #eee;
+    /* scroll bar的白底 */
+}
+
+.scrollbox::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.scrollbox::-webkit-scrollbar-button {
+    width: 10px;
+    height: 10px;
+    background: #666;
+}
+
+.scrollbox::-webkit-scrollbar-thumb {
+    background: #999;
+}
+
+/* 下方這是下面左右向捲輪軸 overflow: scroll會顯示出 */
+.scrollbox::-webkit-scrollbar-corner {
+    background: #ddd;
+}
+
+/* ------------------NEWS區--------------------- */
+.news-list article {
+    color: #444;
+    background-color: rgba(255, 247, 234, 0.4);
+    box-shadow: 2px 2px 5px #ccc;
+    /* x軸 y軸 陰影大小 顏色 */
+    overflow: hidden;
+    border-radius: 25px 25px 0 0;
+    /*左上 右上 右下 左下 順時鐘*/
+}
+
+.news-list figure {
+    height: 40%;
+    overflow: hidden;
+}
+
+/* 圖片置中縮放不會跑掉 */
+.news-list figure img {
+    height: 100%;
+    /* 一定要搭配高度100% */
+    object-fit: cover;
+    /* 針對img */
+}
+
+.news-list h2 {
+    margin: 20px 50px;
+    text-align: center;
+    border-bottom: 1px solid #888;
+}
+
+.news-list p {
+    margin: 0 50px;
+    /*多行省略語法*/
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 文字一行超出範圍後面自動... */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    /* 偵測多行 */
+    -webkit-line-clamp: 3;
+    /* 3行斷行 */
+    text-align: justify
+        /* 齊行 */
+}
+
+.news-list a {
+    display: block;
+    width: 5rem;
+    padding: 3px 0 6px;
+    /* 上 左右 下 */
+    margin: 30px auto;
+    text-align: center;
+    border: 1px solid rgb(250, 225, 160, .7);
+    background-color: rgba(243, 231, 201, 0.7);
+    color: #444;
+    text-decoration: none;
+    /* 無底線 */
+    border-radius: 10px;
+    /* 圓角 */
+}
+
+/* ------------------VEDIO區--------------------- */
+#video div {
+    height: 70vh;
+    /* 視窗高度尺寸 */
+}
+
+#video video {
+    height: 100%;
+    /* 照著上面爸爸的尺寸 */
+    object-fit: contain;
+    /* 整個內容都要出現 */
+}
+
+/* ------------------CONTACT區--------------------- */
+#contact_form{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    /* align-items: center;內容公用區有設定置中，這邊不用設置 */
+}
+#contact_form label{
+ color: #666;
+}
+#contact_form input,#message{
+    border: 1px solid rgb(143, 165, 172);
+    padding: 5px;
+    margin-bottom: 20px;
+}
+ /* CSS buttun hover */
+button{
+     /* position: relative; */
+     /* outline: none; */
+     margin: 0 auto;
+     text-decoration: none;
+     border-radius: 50px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     cursor: pointer;
+     /* text-transform: uppercase;強制英文大寫 */
+     height: 60px;
+     width: 210px;
+     /* opacity: 1; */
+     background-color: #ffffff;
+     border: 1px solid rgb(143,165,172);
+ }
+button span{
+     color: #2d4369;
+     font-size: 12px;
+     font-weight: 500;
+     letter-spacing: 0.7px;
+ }
+button:hover{
+    animation: rotate 0.7s ease-in-out both;
+}
+button:hover span{
+    animation: storm 0.7s ease-in-out both;
+    animation-delay: 0.06s;
+}
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  @keyframes storm {
+    0% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+    25% {
+      transform: translate3d(4px, 0, 0) translateZ(0);
+    }
+    50% {
+      transform: translate3d(-3px, 0, 0) translateZ(0);
+    }
+    75% {
+      transform: translate3d(2px, 0, 0) translateZ(0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0) translateZ(0);
+    }
+  }
+
+
+#gotop{
+    display: none;/* 給淡出淡入 一開始消失 */
+    position: fixed;
+    bottom: 115px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    font-size: 50px;
+    line-height: 45px;
+}
+
+/* ------------------FOOTER區--------------------- */
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer h1 {
+    width: 75px;
+    margin: 20px;
+}

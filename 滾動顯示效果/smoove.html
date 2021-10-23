@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>滾動動畫scroll</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        header {
+            height: 100vh;
+            background-color: rgb(148, 212, 191);
+            text-align: center;
+            line-height: 100vh;
+            color: azure;
+            font-size: 3rem;
+        }
+
+        .row {
+            display: flex;
+
+        }
+
+        .box {
+            flex: 1;
+            height: 300px;
+            margin: 20px;
+            background-color: cadetblue;
+        }
+
+        footer {
+            height: 200px;
+            background-color: rgb(148, 212, 191);
+            text-align: center;
+            line-height: 200px;
+            color: azure;
+            font-size: 3rem;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>BANNER</header>
+    <section>
+        <!-- div.row*5>div.box*6 -->
+        <div class="row">
+            <div class="box"></div>
+            <div class="box"></div>
+
+        </div>
+        <div class="row">
+            <div class="box" data-move-x="-500px" data-rotate="90deg"></div>
+            <div class="box" data-move-x="-200px" data-move-y="200px" data-rotate="45deg"></div>
+            <div class="box" data-move-x="500px" data-rotate="-90deg"></div>
+        </div>
+
+        <div class="row">
+            <div class="box" data-move-x="-200px" data-move-y="200px"></div>
+            <div class="box" data-move-x="-100px" data-move-y="200px"></div>
+            <div class="box" data-move-x="100px" data-move-y="200px"></div>
+            <div class="box" data-move-x="200px" data-move-y="200px"></div>
+
+        </div>
+        <div class="row">
+            <div class="box" data-move-x="-150%" data-rotate-y="-270deg"></div>
+            <div class="box" data-move-x="150%" data-rotate-y="270deg"></div>
+
+        </div>
+        <div class="row">
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+            <div class="box" data-move-y="200px" data-move-z="-500px" data-rotate-x="90deg"></div>
+        </div>
+    </section>
+    <footer>FOOTER</footer>
+    <!-- jQuery原生碼 CDN-->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- smoove js　CDN-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-smoove/0.2.10/jquery.smoove.min.js"></script>
+
+    <!--smoove選項  -->
+    <script>
+        $('.box').smoove({
+
+            offset: "40%",
+    
+
+        });
+
+
+    </script>
+
+
+</body>
+
+</html>

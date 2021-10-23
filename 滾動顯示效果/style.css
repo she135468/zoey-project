@@ -1,0 +1,36 @@
+*{
+    margin: 0;padding: ;
+}
+.banner{
+    height: 100vh;
+    background-color: rgb(148,212, 191);
+    text-align: center;
+    line-height: 100vh;
+    color: azure;
+    font-size: 3rem;
+}
+.block{
+    height: 3;
+    background-color: ;
+}
+.row{
+    display: flex;
+    justify-content: ;
+    align-items: ;
+}
+.box1{
+    width: 50%;
+    margin: 20px;
+}
+.box2{
+    width: 33%;
+    margin: 20px;
+}
+.box3{
+    width: 25%;
+    margin: 20px;
+}
+.box4{
+    width: 16%;
+    margin: 20px;
+}
